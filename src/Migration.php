@@ -108,7 +108,7 @@ BODY)
         $klass = (new Klass($class_name))
             ->setStrictTypes(true)
             ->setFileComment(KlassFileComment::getInstance()
-                ->addComment(KlassFileComment::ROW, $file_comment)
+                ->addComment(KlassFileComment::RAW, $file_comment)
             )
             ->setClassComment($class_name)
             ->setExtends('\\' . Item::class)
@@ -127,7 +127,6 @@ BODY)
      *
      * @param string|null $version バージョン指定(指定がなければ全部)
      * @return void
-     * @throws CitrusException
      */
     public function up(?string $version = null): void
     {
