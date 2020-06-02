@@ -107,12 +107,10 @@ BODY)
         // マイグレーションクラス生成
         $klass = (new Klass($class_name))
             ->setStrictTypes(true)
-            ->setFileComment(KlassFileComment::getInstance()
-                ->addComment(KlassFileComment::ROW, $file_comment)
-            )
+            ->setFileComment(KlassFileComment::newRaw($file_comment))
             ->setClassComment($class_name)
             ->setExtends('\\' . Item::class)
-            ->addProperty((new KlassProperty('string', 'object_name', $object_name, 'object', KlassVisibility::TYPE_PROTECTED)))
+            ->addProperty(KlassProperty::newProtectedString('object_name', $object_name, 'object'))
             ->addMethod($upMethod)
             ->addMethod($downMethod);
 
@@ -127,7 +125,6 @@ BODY)
      *
      * @param string|null $version バージョン指定(指定がなければ全部)
      * @return void
-     * @throws CitrusException
      */
     public function up(?string $version = null): void
     {
