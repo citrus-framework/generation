@@ -275,7 +275,7 @@ BODY)
         $output_dir = $this->configures['output_dir'];
         file_put_contents(
             sprintf(
-                '%s/%s.class.php',
+                '%s/%s.php',
                 $output_dir,
                 $class_name
             ),
@@ -311,7 +311,7 @@ BODY)
         }
 
         // マイグレーションクラス名
-        $class_name = str_replace('.class.php', '', $filename);
+        $class_name = str_replace('.php', '', $filename);
 
         // ファイルであれば読み込み
         include_once($class_path);
