@@ -106,7 +106,7 @@ class MigrationTest extends TestCase
         $migration->generate($name);
 
         // ファイルができている
-        $output_file = sprintf('%s/Citrus_%s_%s.class.php', $this->output_dir, Dates::now()->format('YmdHis'), $name);
+        $output_file = sprintf('%s/Citrus_%s_%s.php', $this->output_dir, Dates::now()->format('YmdHis'), $name);
         $this->assertTrue(is_file($output_file));
     }
 
