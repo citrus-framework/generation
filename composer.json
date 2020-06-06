@@ -10,6 +10,9 @@
       "email": "take64@citrus.tk"
     }
   ],
+  "bin": [
+    "src/bin/cf-migration"
+  ],
   "require": {
     "citrus-framework/configure": "^1.0",
     "citrus-framework/variables": "^1.0",
