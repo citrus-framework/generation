@@ -22,6 +22,7 @@ use Citrus\Variable\Klass\KlassProperty;
 use Citrus\Variable\Klass\KlassReturn;
 use Citrus\Variable\Klass\KlassVisibility;
 use Citrus\Variable\Singleton;
+use Citrus\Variable\Strings;
 
 /**
  * マイグレーション処理
@@ -90,7 +91,7 @@ class Migration extends Configurable
         // 生成時間
         $timestamp = Dates::now()->format('YmdHis');
         // 対象テーブル名
-        $object_name = strtolower(str_replace($this->file_patterns, '', $generate_name));
+        $object_name = strtolower(str_replace($this->file_patterns, '', Strings::snakeCase($generate_name)));
         // ファイルコメント
         $file_comment = sprintf('generated Citrus Migration file at %s', Dates::now()->formatTimestamp());
         // クラス名

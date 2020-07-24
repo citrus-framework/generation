@@ -10,6 +10,9 @@ declare(strict_types=1);
 
 namespace Citrus\Migration;
 
+/**
+ * マイグレーション用アイテム
+ */
 abstract class Item
 {
     /** @var string object name */
