@@ -111,7 +111,7 @@ BODY)
             ->setFileComment(KlassFileComment::newRaw($file_comment))
             ->setClassComment($class_name)
             ->setExtends('\\' . Item::class)
-            ->addProperty(KlassProperty::newProtectedString('object_name', $object_name, 'object'))
+            ->addProperty(KlassProperty::newProtectedQuotedString('object_name', $object_name, 'object'))
             ->addMethod($upMethod)
             ->addMethod($downMethod);
 
