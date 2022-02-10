@@ -135,14 +135,22 @@ class MigrationTest extends TestCase
         $versionManager->up($migrationItem);
 
         // テーブル作成が成功していればSELECT文が発行できる
-        $pdo->query($query);
         $this->assertNotFalse($pdo->query($query));
 
         // マイグレーションの逆方向実行
         $versionManager->down($migrationItem);
 
         // テーブル削除が成功していればSELECT文が発行できない
-        $this->assertFalse($pdo->query($query));
+        $result = true;
+        try
+        {
+            $pdo->query($query);
+        }
+        catch (\PDOException $e)
+        {
+            $result = false;
+        }
+        $this->assertFalse($result);
     }
 
 

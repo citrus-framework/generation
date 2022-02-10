@@ -165,7 +165,7 @@ SQL;
         {
             $schema .= '.';
         }
-        return str_replace('{SCHEMA}', $schema, $query);
+        return str_replace('{SCHEMA}', ($schema ?? ''), $query);
     }
 
 
