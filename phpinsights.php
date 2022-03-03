@@ -44,10 +44,10 @@ return [
         //  ExampleInsight::class => [
         //      'key' => 'value',
         //  ],
-        ObjectCalisthenics\Sniffs\NamingConventions\ElementNameMinimalLengthSniff::class => [
-            'minLength' => 3,
-            'allowedShortNames' => ['i', 'id', 'to', 'up', 'ky', 'vl', 'e'],
-        ],
+//        ObjectCalisthenics\Sniffs\NamingConventions\ElementNameMinimalLengthSniff::class => [
+//            'minLength' => 3,
+//            'allowedShortNames' => ['i', 'id', 'to', 'up', 'ky', 'vl', 'e'],
+//        ],
         PhpCsFixer\Fixer\CastNotation\CastSpacesFixer::class => [
             'space' => 'none',
         ],
@@ -73,8 +73,8 @@ return [
             'absoluteLineLimit' => 120,
             'ignoreComments' => true,
         ],
-        \ObjectCalisthenics\Sniffs\Files\FunctionLengthSniff::class => [
-            'maxLength' => 32,
-        ]
+//        \ObjectCalisthenics\Sniffs\Files\FunctionLengthSniff::class => [
+//            'maxLength' => 32,
+//        ]
     ],
 ];

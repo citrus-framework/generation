@@ -16,7 +16,7 @@ namespace Citrus\Migration;
 abstract class Item
 {
     /** @var string object name */
-    protected $object_name = '';
+    protected string $object_name = '';
 
 
 
