@@ -18,7 +18,7 @@ use Citrus\Migration\Item;
 class Citrus_20190101000000_CreateTableUsers extends Item
 {
     /** @var string object name */
-    public $object_name = 'users';
+    public string $object_name = 'users';
 
 
 
