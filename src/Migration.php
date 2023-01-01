@@ -31,23 +31,11 @@ class Migration extends Configurable
 {
     use Singleton;
 
-    /** @var string 生成 */
-    public const ACTION_GENERATE = 'generate';
-
-    /** @var string マイグレーションUP */
-    public const ACTION_MIGRATION_UP = 'up';
-
-    /** @var string マイグレーションDOWN */
-    public const ACTION_MIGRATION_DOWN = 'down';
-
-    /** @var string マイグレーションREBIRTH */
-    public const ACTION_MIGRATION_REBIRTH = 'rebirth';
-
     /** @var VersionManager バージョンマネージャー */
-    protected $versionManager;
+    protected VersionManager $versionManager;
 
     /** @var string[] ファイル名パターン */
-    private $file_patterns = [
+    private array $file_patterns = [
         'CreateTable',
         'DropTable',
         'AlterTable',
@@ -78,13 +66,10 @@ class Migration extends Configurable
         return $this;
     }
 
-
-
     /**
      * マイグレーションファイル生成
      *
      * @param string $generate_name 生成ファイル名
-     * @return void
      */
     public function generate(string $generate_name): void
     {
@@ -119,13 +104,10 @@ BODY)
         self::saveMigrationFile($class_name, $klass->toString());
     }
 
-
-
     /**
      * マイグレーションの正方向実行
      *
      * @param string|null $version バージョン指定(指定がなければ全部)
-     * @return void
      */
     public function up(?string $version = null): void
     {
@@ -151,13 +133,10 @@ BODY)
         }
     }
 
-
-
     /**
      * マイグレーション逆方向実行
      *
      * @param string|null $version バージョン指定(指定がなければ全部)
-     * @return void
      */
     public function down(?string $version = null): void
     {
@@ -184,8 +163,6 @@ BODY)
         }
     }
 
-
-
     /**
      * マイグレーションREBIRTHの実行
      *
@@ -200,8 +177,6 @@ BODY)
         $this->up($version);
     }
 
-
-
     /**
      * {@inheritDoc}
      */
@@ -210,21 +185,17 @@ BODY)
         return 'migration';
     }
 
-
-
     /**
      * {@inheritDoc}
      */
     protected function configureDefaults(): array
     {
         return [
-            'mode' => 0755,
+            'mode'  => 0755,
             'owner' => posix_getpwuid(posix_geteuid())['name'],
             'group' => posix_getgrgid(posix_getegid())['name'],
         ];
     }
-
-
 
     /**
      * {@inheritDoc}
@@ -240,12 +211,8 @@ BODY)
         ];
     }
 
-
-
     /**
      * 出力ファイル格納ディレクトリパスの設定
-     *
-     * @return void
      */
     private function setupOutputDirectory(): void
     {
@@ -262,14 +229,11 @@ BODY)
         }
     }
 
-
-
     /**
      * 生成したマイグレーションファイルの保存
      *
      * @param string $class_name    生成マイグレーションクラス名
      * @param string $file_contents 生成マイグレーションファイル内容
-     * @return void
      */
     private function saveMigrationFile(string $class_name, string $file_contents): void
     {
@@ -283,8 +247,6 @@ BODY)
             $file_contents
         );
     }
-
-
 
     /**
      * マイグレーションクラスのインスタンス取得

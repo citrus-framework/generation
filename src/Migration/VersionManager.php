@@ -45,12 +45,8 @@ class VersionManager
         $this->setupMigration();
     }
 
-
-
     /**
      * マイグレーションのセットアップ
-     *
-     * @return void
      */
     public function setupMigration(): void
     {
@@ -65,13 +61,10 @@ SQL;
         self::executeQuery($query);
     }
 
-
-
     /**
      * マイグレーションの正方向実行
      *
      * @param Item $item
-     * @return void
      */
     public function up(Item $item): void
     {
@@ -107,13 +100,10 @@ SQL;
         $this->$method(sprintf('%s up. %s. %f μs.', $class_name, $method, $execute_microsecond));
     }
 
-
-
     /**
      * マイグレーションの逆方向実行
      *
      * @param Item $item
-     * @return void
      */
     public function down(Item $item): void
     {
@@ -149,8 +139,6 @@ SQL;
         $this->$method(sprintf('%s down. %s. %f μs.', $class_name, $method, $execute_microsecond));
     }
 
-
-
     /**
      * スキーマ指定の置換
      *
@@ -168,8 +156,6 @@ SQL;
         return str_replace('{SCHEMA}', ($schema ?? ''), $query);
     }
 
-
-
     /**
      * クエリの実行
      *
@@ -185,8 +171,6 @@ SQL;
 
         return (false === $result ? false : true);
     }
-
-
 
     /**
      * プリペアクエリの実行
@@ -205,8 +189,6 @@ SQL;
         return (true === $result ? $statement : null);
     }
 
-
-
     /**
      * 指定のバージョンの実行ログが存在するか
      *
@@ -215,9 +197,12 @@ SQL;
      */
     private function existVersion(string $version): bool
     {
-        $statement = $this->prepareQuery('SELECT * FROM {SCHEMA}cf_migrations WHERE version_code = :version_code;', [
-            ':version_code' => $version,
-        ]);
+        $statement = $this->prepareQuery(
+            'SELECT * FROM {SCHEMA}cf_migrations WHERE version_code = :version_code;',
+            [
+                ':version_code' => $version,
+            ],
+        );
         if (true === is_null($statement))
         {
             return false;
@@ -226,35 +211,35 @@ SQL;
         return (0 < count($statement->fetchAll(PDO::FETCH_ASSOC)));
     }
 
-
-
     /**
      * バージョン情報の登録
      *
      * @param string $version
-     * @return void
      */
     private function createVersion(string $version): void
     {
         $now = Dates::now()->format('Y-m-d H:i:s T');
-        $this->prepareQuery('INSERT INTO {SCHEMA}cf_migrations (version_code, migrated_at) VALUES (:version_code, :migrated_at);', [
-            ':version_code' => $version,
-            ':migrated_at' => $now,
-        ]);
+        $this->prepareQuery(
+            'INSERT INTO {SCHEMA}cf_migrations (version_code, migrated_at) VALUES (:version_code, :migrated_at);',
+            [
+                ':version_code' => $version,
+                ':migrated_at'  => $now,
+            ],
+        );
     }
-
-
 
     /**
      * バージョン情報の削除
      *
      * @param string $version
-     * @return void
      */
     private function deleteVersion(string $version): void
     {
-        $this->prepareQuery('DELETE FROM {SCHEMA}cf_migrations WHERE version_code = :version_code;', [
-            ':version_code' => $version,
-        ]);
+        $this->prepareQuery(
+            'DELETE FROM {SCHEMA}cf_migrations WHERE version_code = :version_code;',
+            [
+                ':version_code' => $version,
+            ],
+        );
     }
 }

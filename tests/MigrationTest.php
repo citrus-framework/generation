@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Test;
 
-use Citrus\Citrus;
 use Citrus\CitrusException;
 use Citrus\Database\DSN;
 use Citrus\Migration;

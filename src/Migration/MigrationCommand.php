@@ -19,8 +19,8 @@ use Citrus\Migration;
  */
 class MigrationCommand extends Console
 {
-    /** @var array command options */
-    protected $options = [
+    /** @var string[] command options */
+    protected array $options = [
         'action::',
         'name:',
         'version:',
@@ -45,20 +45,20 @@ class MigrationCommand extends Console
 
         switch ($action)
         {
-            // 生成処理
-            case Migration::ACTION_GENERATE:
+            case ActionType::GENERATE->value:
+                // 生成処理
                 $migration->generate($name);
                 break;
-            // マイグレーションUP実行
-            case Migration::ACTION_MIGRATION_UP:
+            case ActionType::MIGRATION_UP->value:
+                // マイグレーションUP実行
                 $migration->up($version);
                 break;
-            // マイグレーションDOWN実行
-            case Migration::ACTION_MIGRATION_DOWN:
+            case ActionType::MIGRATION_DOWN->value:
+                // マイグレーションDOWN実行
                 $migration->down($version);
                 break;
-            // マイグレーションREBIRTH実行
-            case Migration::ACTION_MIGRATION_REBIRTH:
+            case ActionType::MIGRATION_REBIRTH->value:
+                // マイグレーションREBIRTH実行
                 $migration->rebirth($version);
                 break;
             default:
