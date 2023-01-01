@@ -31,18 +31,6 @@ class Migration extends Configurable
 {
     use Singleton;
 
-    /** @var string 生成 */
-    public const ACTION_GENERATE = 'generate';
-
-    /** @var string マイグレーションUP */
-    public const ACTION_MIGRATION_UP = 'up';
-
-    /** @var string マイグレーションDOWN */
-    public const ACTION_MIGRATION_DOWN = 'down';
-
-    /** @var string マイグレーションREBIRTH */
-    public const ACTION_MIGRATION_REBIRTH = 'rebirth';
-
     /** @var VersionManager バージョンマネージャー */
     protected $versionManager;
 
