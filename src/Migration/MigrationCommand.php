@@ -19,8 +19,8 @@ use Citrus\Migration;
  */
 class MigrationCommand extends Console
 {
-    /** @var array command options */
-    protected $options = [
+    /** @var string[] command options */
+    protected array $options = [
         'action::',
         'name:',
         'version:',
