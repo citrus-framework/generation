@@ -19,7 +19,6 @@ return [
         NunoMaduro\PhpInsights\Domain\Sniffs\ForbiddenSetterSniff::class,
         PhpCsFixer\Fixer\ControlStructure\NoUnneededControlParenthesesFixer::class,
         PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis\UselessOverridingMethodSniff::class,
-        SlevomatCodingStandard\Sniffs\Classes\ModernClassNameReferenceSniff::class,
         SlevomatCodingStandard\Sniffs\Commenting\UselessInheritDocCommentSniff::class,
         SlevomatCodingStandard\Sniffs\ControlStructures\DisallowYodaComparisonSniff::class,
         SlevomatCodingStandard\Sniffs\ControlStructures\LanguageConstructWithParenthesesSniff::class,
@@ -37,6 +36,7 @@ return [
 
         // Style
         PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\ArbitraryParenthesesSpacingSniff::class,
+        PHP_CodeSniffer\Standards\PSR2\Sniffs\ControlStructures\ElseIfDeclarationSniff::class,
     ],
     'config' => [
         // Architecture

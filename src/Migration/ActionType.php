@@ -18,12 +18,12 @@ enum ActionType: string
     /** 生成 */
     case GENERATE = 'generate';
 
-    /** マイグレーションUP */
-    case MIGRATION_UP = 'up';
+    /** UP */
+    case UP = 'up';
 
-    /** マイグレーションDOWN */
-    case MIGRATION_DOWN = 'down';
+    /** DOWN */
+    case DOWN = 'down';
 
-    /** マイグレーションREBIRTH */
-    case MIGRATION_REBIRTH = 'rebirth';
+    /** 再実行 */
+    case REBIRTH = 'rebirth';
 }

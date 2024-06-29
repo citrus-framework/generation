@@ -44,8 +44,6 @@ class Migration extends Configurable
         'InsertInto',
     ];
 
-
-
     /**
      * {@inheritDoc}
      */
@@ -82,7 +80,7 @@ class Migration extends Configurable
         // クラス名
         $class_name = sprintf('Citrus_%s_%s', $timestamp, $generate_name);
         // メソッド
-        $upMethod = (new KlassMethod(KlassVisibility::TYPE_PUBLIC, 'up', false, 'up'))
+        $upMethod = (new KlassMethod(KlassVisibility::PUBLIC, 'up', false, 'up'))
             ->setBody(<<<'BODY'
         return <<<SQL
 SQL;
