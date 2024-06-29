@@ -26,8 +26,6 @@ class MigrationCommand extends Console
         'version:',
     ];
 
-
-
     /**
      * {@inheritDoc}
      *
@@ -43,22 +41,22 @@ class MigrationCommand extends Console
 
         $migration = Migration::sharedInstance()->loadConfigures($this->configures);
 
-        switch ($action)
+        switch (ActionType::from($action))
         {
-            case ActionType::GENERATE->value:
-                // 生成処理
+            // 生成処理
+            case ActionType::GENERATE:
                 $migration->generate($name);
                 break;
-            case ActionType::MIGRATION_UP->value:
-                // マイグレーションUP実行
+            // マイグレーションUP実行
+            case ActionType::UP:
                 $migration->up($version);
                 break;
-            case ActionType::MIGRATION_DOWN->value:
-                // マイグレーションDOWN実行
+            // マイグレーションDOWN実行
+            case ActionType::DOWN:
                 $migration->down($version);
                 break;
-            case ActionType::MIGRATION_REBIRTH->value:
-                // マイグレーションREBIRTH実行
+            // マイグレーションREBIRTH実行
+            case ActionType::REBIRTH:
                 $migration->rebirth($version);
                 break;
             default:

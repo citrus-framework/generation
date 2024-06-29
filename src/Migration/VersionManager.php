@@ -25,12 +25,10 @@ class VersionManager
     use ConsoleOutput;
 
     /** @var PDO DBハンドラ */
-    private $handler;
+    private PDO $handler;
 
     /** @var DSN DB接続情報 */
-    private $dsn;
-
-
+    private DSN $dsn;
 
     /**
      * constructor.
