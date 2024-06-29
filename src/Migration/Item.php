@@ -18,8 +18,6 @@ abstract class Item
     /** @var string object name */
     protected string $object_name = '';
 
-
-
     /**
      * migration.sh up
      *
@@ -27,16 +25,12 @@ abstract class Item
      */
     abstract public function up(): string;
 
-
-
     /**
      * migration.sh down
      *
      * @return string SQL
      */
     abstract public function down(): string;
-
-
 
     /**
      * バージョンの取得
