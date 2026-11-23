@@ -20,21 +20,18 @@ abstract class Item
 
     /**
      * migration.sh up
-     *
      * @return string SQL
      */
     abstract public function up(): string;
 
     /**
      * migration.sh down
-     *
      * @return string SQL
      */
     abstract public function down(): string;
 
     /**
      * バージョンの取得
-     *
      * @return string バージョン取得
      */
     public function version(): string
