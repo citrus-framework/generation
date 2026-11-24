@@ -28,7 +28,6 @@ class MigrationCommand extends Console
 
     /**
      * {@inheritDoc}
-     *
      * @throws CitrusException
      */
     public function execute(): void
@@ -47,15 +46,15 @@ class MigrationCommand extends Console
             case ActionType::GENERATE:
                 $migration->generate($name);
                 break;
-            // マイグレーションUP実行
+                // マイグレーションUP実行
             case ActionType::UP:
                 $migration->up($version);
                 break;
-            // マイグレーションDOWN実行
+                // マイグレーションDOWN実行
             case ActionType::DOWN:
                 $migration->down($version);
                 break;
-            // マイグレーションREBIRTH実行
+                // マイグレーションREBIRTH実行
             case ActionType::REBIRTH:
                 $migration->rebirth($version);
                 break;
